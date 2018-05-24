@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<something-else-entirely>
+<proxool>
+<alias>pool1</alias>
+<driver-url>jdbc:mysql://localhost:3306/bjedu?useUnicode=true&amp;characterEncoding=UTF-8</driver-url>
+<!--<driver-url>jdbc:oracle:thin:@10.149.56.52:1521:orcl</driver-url>-->
+<!--<driver-url>jdbc:oracle:thin:@localhost:1521:mydb</driver-url>
+<driver-url>jdbc:oracle:thin:@10.149.56.52:1521:orcl</driver-url>
+<driver-url>jdbc:oracle:thin:@(DESCRIPTION =(ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST = 172.30.0.93)(PORT = 1521))(ADDRESS = (PROTOCOL = TCP)(HOST = 172.30.0.94)(PORT = 1521))(LOAD_BALANCE = yes)(failover=yes))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = GSNCBJ)))</driver-url>
+<driver-url>jdbc:oracle:thin:@10.149.56.52:1521:orcl</driver-url>
+<driver-url>jdbc:oracle:thin:@10.149.56.51:1521:orcl</driver-url>
+<driver-url>jdbc:oracle:thin:@(DESCRIPTION =(ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST = 10.1.5.37)(PORT = 1521))(ADDRESS = (PROTOCOL = TCP)(HOST = 10.1.5.38)(PORT = 1521))(LOAD_BALANCE = yes)(failover=yes))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = YWDB)))</driver-url>
+<driver-url>jdbc:oracle:thin:@10.149.56.51:1521:orcl</driver-url>-->
+<driver-class>com.mysql.jdbc.Driver</driver-class>
+<driver-properties>
+<property name="user" value="bjedu"/>
+<property name="password" value="bjedu"/>
+</driver-properties>
+
+<maximum-connection-count>150</maximum-connection-count>
+<minimum-connection-count>5</minimum-connection-count>
+
+<maximum-active-time>17280000</maximum-active-time>
+<minimum-connection-lifetime>18000000</minimum-connection-lifetime>
+
+<!-- min active conn -->
+<prototype-count>5</prototype-count>
+
+<!-- conn queue -->
+<maximum-new-connections>10</maximum-new-connections>
+
+<!-- proxool sleep time auto detroy ms-->
+<house-keeping-sleep-time>300000</house-keeping-sleep-time>
+<house-keeping-test-sql>select CURRENT_DATE from dual</house-keeping-test-sql>
+</proxool>
+</something-else-entirely>

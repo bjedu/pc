@@ -1,0 +1,38 @@
+<!DOCTYPE xwork
+    PUBLIC "-//OpenSymphony Group//XWork 1.0//EN"
+    "http://www.opensymphony.com/xwork/xwork-1.0.dtd">
+
+<xwork>
+     <package name="login" extends="webwork-default">
+        <default-interceptor-ref name="defaultStack"/>
+		
+		<!-- 后 台管理--> 
+   		
+   		<!-- 操作日志-->
+   		<action name="login"
+			class="com.bjedu.main.login.action.LoginAction">
+			<result name="success" type="json">
+				<param name="jsonObjectProperty">msg</param>
+			</result>
+			<result name="error" type="json">
+				<param name="jsonObjectProperty">msg</param>
+			</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<action name="hello"
+			class="com.bjedu.main.login.action.HelloAction">
+			<result name="success" type="dispatcher">
+				<param name="location">hello.jsp</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">login.jsp</param>
+			</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		
+		
+   </package>
+
+</xwork>

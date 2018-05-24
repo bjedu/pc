@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app
+     PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+	
+  <filter>
+      <filter-name>container</filter-name>
+      <filter-class>com.opensymphony.webwork.lifecycle.RequestLifecycleFilter</filter-class>
+   </filter>
+   
+   <filter> 
+      	<filter-name>RoleFilter</filter-name>    
+      	<filter-class>com.bjedu.util.filter.CharFilter</filter-class>
+      	<init-param>
+	      <param-name>characterEncoding</param-name>
+	      <param-value>UTF-8</param-value>
+	    </init-param>
+	    <init-param>
+	      <param-name>enabled</param-name>
+	      <param-value>true</param-value>
+	    </init-param>
+  	</filter>
+  	 <filter-mapping>
+      <filter-name>container</filter-name>
+      <url-pattern>/*</url-pattern>
+    </filter-mapping> 
+  	<filter-mapping>    
+     	<filter-name>RoleFilter</filter-name>    
+     	<url-pattern>*.jsp</url-pattern>
+  	</filter-mapping>
+  	
+  	<filter-mapping>    
+     	<filter-name>RoleFilter</filter-name>    
+     	<url-pattern>*.action</url-pattern>
+  	</filter-mapping>
+
+  
+
+   <listener>
+      <listener-class>com.opensymphony.webwork.lifecycle.ApplicationLifecycleListener</listener-class>
+   </listener>
+
+   <listener>
+      <listener-class>com.opensymphony.webwork.lifecycle.SessionLifecycleListener</listener-class>
+   </listener>
+   
+   <servlet>
+      <servlet-name>velocity</servlet-name> 
+      <servlet-class>com.opensymphony.webwork.views.velocity.WebWorkVelocityServlet</servlet-class> 
+      <load-on-startup>1</load-on-startup> 
+   </servlet>
+
+   <!-- This entry is required to have the framework process calls to WebWork 2 actions -->
+   <servlet>
+      <servlet-name>webwork</servlet-name>
+      <servlet-class>com.opensymphony.webwork.dispatcher.ServletDispatcher</servlet-class>
+   </servlet>
+   
+   <!-- mappings for *.action and *.vm (needed for ww) -->
+   <servlet-mapping>
+       <servlet-name>webwork</servlet-name>
+       <url-pattern>*.action</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+   	  <servlet-name>velocity</servlet-name>
+   	  <url-pattern>*.vm</url-pattern> 
+   </servlet-mapping>
+   
+   <!-- added by wbb 2014-06-16  CA key  32 -->
+   <servlet>
+		<servlet-name>sfzCAma</servlet-name>
+		<servlet-class>
+			com.bjca.css.util.sfzCAmaServlet
+		</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>sfzCAma</servlet-name>
+		<url-pattern>/servlet/sfzCAma</url-pattern>
+	</servlet-mapping>
+   <!-- end -->
+   <!--  timer config initial start-->
+   <!--  
+   <servlet>     
+      <servlet-name>QuartzInitializer</servlet-name>     
+      <servlet-class>org.quartz.ee.servlet.QuartzInitializerServlet</servlet-class>     
+      <init-param>    
+         <param-name>shutdown-on-unload</param-name>    
+         <param-value>true</param-value>    
+      </init-param>    
+      <init-param>    
+         <param-name>config-file</param-name>    
+         <param-value>quartz.properties</param-value>     
+      </init-param>    
+      <load-on-startup>2</load-on-startup>    
+   </servlet>
+   -->
+   <!--  timer config initial end-->
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+   <!--ww tag library-->
+   <taglib>
+      <taglib-uri>webwork</taglib-uri> 
+      <taglib-location>/WEB-INF/webwork.tld</taglib-location> 
+   </taglib>
+   
+</web-app>

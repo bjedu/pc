@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 
+ * @version 1.0 2016-04-28 release(<WJK GENERATOR> <-(Write your name as author here))
+-->
+<hibernate-mapping>
+	<class name="com.bjedu.main.model.GUser" table="G_USER" >
+		<id name="uuid" type="java.lang.String">
+			<column name="UUID" length="60" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="loginName" type="java.lang.String">
+			<column name="LOGIN_NAME" length="50">
+				<comment>年度</comment>
+			</column>
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="PASSWORD" length="50">
+				<comment>单位标志</comment>
+			</column>
+		</property>
+		<property name="realName" type="java.lang.String">
+			<column name="REAL_NAME" length="50">
+				<comment>单位标志</comment>
+			</column>
+		</property>
+		<!--<property name="roleId" type="java.lang.String">
+			<column name="ROLE_ID" length="300">
+				<comment>单位标志</comment>
+			</column>
+		</property>
+		<property name="dataLevel" type="java.lang.Integer">
+			<column name="DATA_LEVEL" >
+				<comment>月份</comment>
+			</column>
+		</property>
+		<property name="userLevel" type="java.lang.Integer">
+			<column name="USER_LEVEL" >
+				<comment>月工资</comment>
+			</column>
+		</property>
+		<property name="userGroup" type="java.lang.Integer">
+			<column name="USER_GROUP">
+				<comment>备注</comment>
+			</column>
+		</property>
+		-->
+	</class>
+</hibernate-mapping>

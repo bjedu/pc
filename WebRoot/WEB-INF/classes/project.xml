@@ -1,0 +1,53 @@
+<!DOCTYPE xwork
+    PUBLIC "-//OpenSymphony Group//XWork 1.0//EN"
+    "http://www.opensymphony.com/xwork/xwork-1.0.dtd">
+
+<xwork>
+     <package name="workflow" extends="webwork-default">
+        <default-interceptor-ref name="defaultStack"/>
+		
+   		<action name="saveproject"
+			class="com.bjedu.main.project.action.ProjectSaveOrUpdateAction">
+			<result name="success" type="json">
+				<param name="jsonObjectProperty">msg</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">error.jsp</param>
+			</result>
+			<result name="login" type="redirect">
+				<param name="location">login.jsp</param>
+			</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<action name="listproject"
+			class="com.bjedu.main.project.action.ProjectListAction">
+			<result name="success" type="json">
+				<param name="jsonObjectProperty">pn</param>
+			</result>
+			<result name="error" type="json">
+				<param name="jsonObjectProperty">pn</param>
+			</result>
+			<result name="login" type="redirect">
+				<param name="location">login.jsp</param>
+			</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<action name="editproject"
+			class="com.bjedu.main.project.action.ProjectEditAction">
+			<result name="success" type="dispatcher">
+				<param name="location">pages/workflow/addworkflow.jsp</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">error.jsp</param>
+			</result>
+			<result name="login" type="redirect">
+				<param name="location">login.jsp</param>
+			</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+   </package>
+
+</xwork>

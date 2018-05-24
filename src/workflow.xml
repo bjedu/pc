@@ -1,0 +1,83 @@
+<!DOCTYPE xwork
+    PUBLIC "-//OpenSymphony Group//XWork 1.0//EN"
+    "http://www.opensymphony.com/xwork/xwork-1.0.dtd">
+
+<xwork>
+     <package name="workflow" extends="webwork-default">
+        <default-interceptor-ref name="defaultStack"/>
+		
+   		<action name="saveworkflow"
+			class="com.bjedu.main.workflow.action.AddOrUpdateWorkflowAction">
+			<result name="success" type="json">
+				<param name="jsonObjectProperty">msg</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">error.jsp</param>
+			</result>
+			<result name="login" type="redirect">
+				<param name="location">login.jsp</param>
+			</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<action name="workflow"
+			class="com.bjedu.main.workflow.action.WorkflowAction">
+			<result name="success" type="json">
+				<param name="jsonObjectProperty">pn</param>
+			</result>
+			<result name="error" type="json">
+				<param name="jsonObjectProperty">pn</param>
+			</result>
+			<result name="login" type="redirect">
+				<param name="location">login.jsp</param>
+			</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<action name="publishiwf"
+			class="com.bjedu.main.workflow.action.PublishWorkflowAction">
+			<result name="success" type="json">
+				<param name="jsonObjectProperty">msg</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">error.jsp</param>
+			</result>
+			<result name="login" type="redirect">
+				<param name="location">login.jsp</param>
+			</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<action name="editworkflow"
+			class="com.bjedu.main.workflow.action.EditWorkflowAction">
+			<result name="success" type="dispatcher">
+				<param name="location">pages/workflow/addworkflow.jsp</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">error.jsp</param>
+			</result>
+			<result name="login" type="redirect">
+				<param name="location">login.jsp</param>
+			</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<action name="beforepubworkflow"
+			class="com.bjedu.main.workflow.action.EditWorkflowAction">
+			<result name="success" type="dispatcher">
+				<param name="location">pages/workflow/addnoods.jsp</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">error.jsp</param>
+			</result>
+			<result name="login" type="redirect">
+				<param name="location">login.jsp</param>
+			</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		
+		
+   </package>
+
+</xwork>

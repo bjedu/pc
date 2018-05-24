@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 
+ * @version 1.0 2016-04-28 release(<WJK GENERATOR> <-(Write your name as author here))
+-->
+<hibernate-mapping>
+	<class name="com.bjedu.main.model.Workflow" table="EDU_WORKFLOW" >
+		<id name="uuid" type="java.lang.String">
+			<column name="UUID" length="60" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="nameW" type="java.lang.String">
+			<column name="NAME_W" length="50">
+				<comment>年度</comment>
+			</column>
+		</property>
+		<property name="describe" type="java.lang.String">
+			<column name="DESCRIPTION" length="500">
+				<comment>单位标志</comment>
+			</column>
+		</property>
+		<property name="owner" type="java.lang.String">
+			<column name="OWNER" length="60">
+				<comment>单位标志</comment>
+			</column>
+		</property>
+		<property name="onFlag" type="java.lang.String">
+			<column name="ON_FLAG" length="1">
+				<comment>单位标志</comment>
+			</column>
+		</property>
+		<property name="nodeNum" type="java.lang.Integer">
+			<column name="NODE_NUM" >
+				<comment>月份</comment>
+			</column>
+		</property>
+		<property name="states" type="java.lang.String">
+			<column name="STATES" length="1">
+				<comment>月工资</comment>
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

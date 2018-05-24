@@ -1,0 +1,64 @@
+/** ajax请求 */
+function ajax(url, params, success) {
+	$.ajax({
+		url : url,
+		type : 'post',
+		dataType : 'json',
+		data : params,
+		success : function(data){
+			success(data);
+		}
+		
+	});
+}
+
+/** ajax页面反填 目前仅限input text*/
+function ajaxToPage(data){
+	if(data.code == "0"){
+		$.each(data.json,function(n,v){
+			for(i in v){
+				if($("#"+i).length>0){
+					$("#"+i).val(v[i]);
+				}
+			}
+		});
+		other(data);
+	}else if(data.code == "1"){
+		message(data.msg);
+	}else if(data.code == "2"){
+		message(data.msg);
+	}
+}
+/**对页面的一些特殊处理 如果需要则具体jsp中覆盖 该方法*/
+function other(data){}
+
+//类似 alert的弹窗
+function message(msg,title,func){
+	if(func ==null){
+		func = true;
+	}
+	if(title == null){
+		title = "专业提示框";
+	}
+	$.dialog({
+		max: false,
+	    min: false,
+        title:title,
+        lock:true,
+	    content: msg,
+	    ok: func
+	});
+}
+
+//问询框
+function cbox(msg,o,c){
+	$.dialog({
+		max: false,
+	    min: false,
+        title:'询问框',
+        lock:true,
+	    content: msg,
+	    ok: o,
+		cancel: c
+	});
+}
