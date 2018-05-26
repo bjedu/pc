@@ -61,6 +61,12 @@
                                         <ul class="nav navbar-nav">
                                             <li><a id="project_ls" href="javascript:;">项目管理</a>
                                             </li>
+                                            <li><a id="member_ls" href="javascript:;">人员管理</a>
+                                            </li>
+                                            <li><a id="standard_ls" href="javascript:;">绩效管理</a>
+                                            </li>
+                                            <li><a id="form_ls" href="javascript:;">明细管理</a>
+                                            </li>
                                             <li><a href="table/table.html">Table</a>
                                             </li>
                                             <li><a href="table/datatable.html">Datatable</a>

@@ -1,4 +1,4 @@
-package com.bjedu.main.project.action;
+package com.bjedu.main.user.action;
 
 import java.util.Date;
 
@@ -14,7 +14,7 @@ import com.bjedu.util.StringHelper;
 import com.opensymphony.xwork.Action;
 
 @SuppressWarnings("serial")
-public class ProjectSaveOrUpdateAction extends AbstractAction {
+public class UserSaveOrUpdateAction extends AbstractAction {
 	private TProject project;
 	
 	@Override
@@ -40,6 +40,7 @@ public class ProjectSaveOrUpdateAction extends AbstractAction {
 			CommonDAO dao = new CommonDAO();
 			dao.saveOrUpdate(project);
 			msg.setCode(Constants.R_SUCCESS);
+			set(Constants.SESSION_USER,gUser);
 		}catch(Exception e) {
 			e.printStackTrace();
 			msg = ExceptionAnalysis.analysisMsg(e);

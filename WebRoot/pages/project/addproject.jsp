@@ -5,7 +5,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<<style>
+<style>
 <!--
 .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
 .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
             <div class="card-body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" id="form1">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">项目名称</label>
                         <div class="col-sm-10">
@@ -42,15 +42,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <label for="inputPassword3" class="col-sm-2 control-label">项目负责人</label>
                         <div class="col-sm-10">
                         	<input type="text" class="form-control" id="j_autocomplete" placeholder="项目负责人">
-                            <input type="hidden" class="form-control" id="project.projectManager" name="project.projectManager" placeholder="项目负责人">
+                            <input type="hidden" class="form-control" id="projectManager" name="project.projectManager" placeholder="项目负责人">
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Sign in</button>
+                            <button type="button" id="save_button" class="btn btn-success">Success</button>
                         </div>
                     </div>
+                    <%@include file="../../modal.jsp" %>
                 </form>
             </div>
         </div>

@@ -1,51 +1,50 @@
-package com.bjedu.main.project.action;
-
-import java.util.Date;
+package com.bjedu.main.user.action;
 
 import com.bjedu.common.action.AbstractAction;
 import com.bjedu.common.dao.CommonDAO;
 import com.bjedu.configuration.Constants;
-import com.bjedu.configuration.ReturnMessage;
 import com.bjedu.main.model.GUser;
 import com.bjedu.main.model.TProject;
 import com.bjedu.util.ExceptionAnalysis;
-import com.bjedu.util.Messages;
 import com.bjedu.util.StringHelper;
 import com.opensymphony.xwork.Action;
 
 @SuppressWarnings("serial")
-public class ProjectSaveOrUpdateAction extends AbstractAction {
+public class UserEditAction extends AbstractAction {
+	private String uuid;
 	private TProject project;
+
+	public UserEditAction() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	@Override
 	protected String go() {
 		// TODO Auto-generated method stub
-		msg = new ReturnMessage();
 		GUser gUser = (GUser)get(Constants.SESSION_USER);
 		if(gUser==null){
-			msg.setCode(Constants.R_NOLOG);
-			msg.setMsg(Messages.getString("systemMsg.loginFaild"));
 			return Action.LOGIN;
 		}
 		try {
-			if(StringHelper.isEmpty(project.getUuid())) {
-				project.setUuid(null);
-			}
-			if(project.getCreateTime()==null) {
-				project.setCreateTime(new Date());
-			}
-			if(StringHelper.isEmpty(project.getCreateUser())) {
-				project.setCreateUser(gUser.getUuid());
-			}
 			CommonDAO dao = new CommonDAO();
-			dao.saveOrUpdate(project);
-			msg.setCode(Constants.R_SUCCESS);
+			if(StringHelper.isNotEmpty(uuid))
+				project = dao.getObjByPK(uuid, TProject.class);
+			else 
+				project = new TProject();
+			return Action.SUCCESS;
 		}catch(Exception e) {
 			e.printStackTrace();
 			msg = ExceptionAnalysis.analysisMsg(e);
 			return Action.ERROR;
 		}
-		return Action.SUCCESS;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 
 	public TProject getProject() {
@@ -56,4 +55,5 @@ public class ProjectSaveOrUpdateAction extends AbstractAction {
 		this.project = project;
 	}
 
+	
 }

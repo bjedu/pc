@@ -12,6 +12,16 @@ function ajax(url, params, suc) {
 	});
 }
 
+function r_message(data){
+	if(data.code == "0"){
+		$("#modalsuccess").click();
+	}else if(data.code == "1"){
+		message(data.msg);
+	}else if(data.code == "2"){
+		message(data.msg);
+	}
+}
+
 /**
  * 左侧树点击
  * @param url
@@ -19,6 +29,8 @@ function ajax(url, params, suc) {
  * @param suc
  */
 function _go(url,params,suc){
+	var date = new Date();
+	url += "?i_session_date="+date;
 	if(!suc){
 		suc = callback;
 	}

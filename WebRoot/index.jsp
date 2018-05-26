@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="loginboxinner">
         	
             <div class="logo">
-            	<h1 class="logo">Ama.<span>Admin</span></h1>
+            	<h1 class="logo">北京宏达一甲课题中心绩效系统</h1>
 				<span class="slogan">项目管理系统</span>
             </div><!--logo-->
             

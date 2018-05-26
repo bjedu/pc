@@ -51,13 +51,13 @@
             -->
             <interceptor-stack name="defaultStack">
             	<interceptor-ref name="component"/>
-                <interceptor-ref name="fieldHtmlTag"/>
+                <!-- <interceptor-ref name="fieldHtmlTag"/> -->
                 <interceptor-ref name="params"/>
           
             </interceptor-stack>
 
             <interceptor-stack name="uploadStack">
-	          <interceptor-ref name="fileUpload"/>
+	          <!-- <interceptor-ref name="fileUpload"/> -->
               <interceptor-ref name="component"/>
               <interceptor-ref name="params"/>
             </interceptor-stack>

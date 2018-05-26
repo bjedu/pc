@@ -11,6 +11,15 @@ jQuery(document).ready(function(){
 		];
 	
 	$("#j_autocomplete").autocomplete({
-		source: availableTags
+		source: availableTags,
+		select: function(event, ui){
+			$("#projectManager").val(ui.item.data);
+		}
+	});
+	
+	$("#save_button").click(function(){
+		var params = $("#form1").serialize();
+		alert(params);
+		ajax(url_project_save_ajax,params,r_message);
 	});
 });

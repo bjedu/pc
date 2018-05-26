@@ -1,4 +1,4 @@
-package com.bjedu.main.project.action;
+package com.bjedu.main.user.action;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,12 +19,12 @@ import com.bjedu.util.PageNew;
 import com.opensymphony.xwork.Action;
 
 @SuppressWarnings("serial")
-public class ProjectListAction extends AbstractAction {
+public class UserListAction extends AbstractAction {
 	private Page page;
 	private PageResult pn;
 	private String projectName;
 
-	public ProjectListAction() {
+	public UserListAction() {
 		// TODO Auto-generated constructor stub
 		page = new Page();
 		pn = new PageResult();
@@ -40,12 +40,11 @@ public class ProjectListAction extends AbstractAction {
 		}
 		try {
 			CommonDAO dao = new CommonDAO();
-			TProject project = new TProject();
-			project.setProjectName(projectName);
+			GUser user = new GUser();
 //			if(gUser.getDataLevel()>Constants.MANAGER) {
 //				project.setCreateUser(gUser.getUuid());
 //			}
-			dao.getobjByModel(project, page);
+			dao.getobjByModel(user, page);
 			pn.setTotal(page.getTotalRows());
 			pn.setRows(page.getResults());
 			return Action.SUCCESS;
